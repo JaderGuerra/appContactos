@@ -1,25 +1,30 @@
 <div class="main">
-  <div class="back">
+  <div class="divBtns">  
+    <div class="back">
     <button routerLink="/home" 
             class="btnBack">
       <i class="fas fa-arrow-left"></i>
     </button>
-  </div>
-  <div class="contactBtn" >
+    </div>
+    <div class="divAdd" >
     <button routerLink="/addcontact" 
             class="btnAdd">
       <i class="fas fa-plus"></i>
     </button>
+    </div>
   </div>
   <div class="contactList">
+    <div class="info" *ngIf="contactSVC.contacto.length == 0" >
+      <h3>No Existe Ningun Contacto Registrado!</h3>
+    </div>
     <li class="contact"
         *ngFor="let contacto of contactSVC.contacto; let i = index"> 
      <div class="contact__div">
-       <!-- <div class="logo">{{contacto?.nombre.charAt(0)}}</div> -->
+       <div class="logo">{{contacto?.nombre.charAt(0)}}</div>
        <div class="datos">
-         <h4>{{contacto.nombre}}</h4>
-         <p>{{contacto.celular}}</p>
-         <p>{{contacto.fecha}}</p>
+         <h4 >{{contacto.nombre}}</h4>
+         <p >{{contacto.celular}}</p>
+         <p >{{contacto.fecha}}</p>
        </div>
      </div>
      <div class="contact__div">
@@ -29,7 +34,8 @@
       
     </div>
     <div class="configIcons">
-      <i (click)="borrar(contacto)" class="far fa-trash-alt"></i>
+      <!-- <i (click)="borrar(contacto)" class="far fa-trash-alt"></i> -->
+      <i (click)="borrar(contacto)" class="fas fa-trash"></i>
     </div>
   </div>
   

@@ -1,18 +1,16 @@
 .main {
   width: 98%;
-  margin: 4em auto 0 auto;
+  margin: 1em auto 0 auto;
   padding: 0.4em;
 }
-.contactBtn {
-  position: absolute;
-  bottom: 6%;
-  right: 10%;
+.divBtns {
+  padding: 0.2em;
+  max-width: 690px;
+  margin: 0 auto 1em auto;
+  display: flex;
+  justify-content: space-between;
 }
-.back {
-  position: absolute;
-  left: 10%;
-  top: 15%;
-}
+
 .btnBack {
   border-radius: 50%;
   border: 1px solid blue;
@@ -36,7 +34,6 @@
 }
 .contact {
   list-style: none;
-
   display: flex;
   justify-content: space-between;
   margin: 0 auto 10px auto;
@@ -50,8 +47,6 @@
 }
 
 .contact__div {
-  /*border: 1px solid blue;
-  */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,36 +88,40 @@
 }
 .fa-pen {
   color: #2ecc3b;
-  border-radius: 4px;
   background-color: #ffffff;
+  border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-  padding: 5px;
+  padding: 8px;
   outline: none;
 }
 
-.fa-trash-alt {
+.fa-trash {
   color: red;
-  border-radius: 4px;
   background-color: #ffffff;
-  padding: 5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  padding: 8px;
   outline: none;
 }
 
+.info {
+  text-align: center;
+}
 .btnAdd,
 .btnBack {
   outline: none;
 }
 @media only screen and (min-width: 709px) {
-  .contactBtn {
-    top: 15%;
-  }
-
   .btnAdd,
   .btnBack {
     cursor: pointer;
+    z-index: 10;
   }
 
   .btnAdd:hover {
@@ -151,8 +150,7 @@
     -o-transition: 0.4s;
   }
   .fa-pen,
-  .fa-trash-alt {
+  .fa-trash {
     cursor: pointer;
-    padding: 5px;
   }
 }
