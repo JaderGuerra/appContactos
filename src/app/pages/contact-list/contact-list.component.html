@@ -15,7 +15,7 @@
     <li class="contact"
         *ngFor="let contacto of contactSVC.contacto; let i = index"> 
      <div class="contact__div">
-       <div class="logo">{{contacto?.nombre.charAt(0)}}</div>
+       <!-- <div class="logo">{{contacto?.nombre.charAt(0)}}</div> -->
        <div class="datos">
          <h4>{{contacto.nombre}}</h4>
          <p>{{contacto.celular}}</p>
@@ -26,13 +26,13 @@
        <div class="configIcons">
       <i [routerLink]="['/editar/', i]" class="fas fa-pen"></i>
       
-        </div>
-       <div class="configIcons">
-         <i (click)="borrar(contacto)" class="far fa-trash-alt"></i>
-        </div>
-     </div>
+    </div>
+    <div class="configIcons">
+      <i (click)="borrar(contacto)" class="far fa-trash-alt"></i>
+    </div>
+  </div>
+  
     </li>
   </div>
 
- 
 </div>

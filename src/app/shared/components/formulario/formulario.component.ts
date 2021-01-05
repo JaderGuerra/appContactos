@@ -18,7 +18,7 @@ export class FormularioComponent implements OnInit {
 /*  */
   constructor(private fb:FormBuilder,
               private router:Router,
-              private contactoSVC:ContactosService,
+              public contactoSVC:ContactosService,
               private aRouter:ActivatedRoute) { 
     this.crearFormulario()
   }
@@ -47,12 +47,18 @@ export class FormularioComponent implements OnInit {
     if (this.formulario.invalid) {
       return
     }else if (this.formulario.valid) {
-
-      const {id,nombre,celular,direccion,fecha} = this.formulario.value;
-     this.contactoSVC.createContacts(id,nombre, celular,direccion,fecha)
-     
-      this.formulario.reset()
+      if (this.id) {
+        this.contactoSVC.guardarStorage()        
        this.back()
+       return
+      }else{
+
+        const {id,nombre,celular,direccion,fecha} = this.formulario.value;
+       this.contactoSVC.createContacts(id,nombre, celular,direccion,fecha)
+       
+        this.formulario.reset()
+         this.back()
+      }
     }
       
     
