@@ -12,10 +12,8 @@ import { ContactosService } from '../../services/contactos.service';
 export class FormularioComponent implements OnInit {
   
   formulario:FormGroup;
-  
-/*  */
   id:string | null;
-/*  */
+
   constructor(private fb:FormBuilder,
               private router:Router,
               public contactoSVC:ContactosService,
@@ -39,78 +37,60 @@ export class FormularioComponent implements OnInit {
       fecha:['',[Validators.required,Validators.minLength(3)]],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id')
-   this.editar()
+   this.getDataInForm()
   }
 
   guardar(){
 
     if (this.formulario.invalid) {
       return
-    }else if (this.formulario.valid) {
-      if (this.id) {
-        this.contactoSVC.guardarStorage()
-       this.back()
-       return
-      }else{
-
+    }
+    else if (this.formulario.valid) {
         const {id,nombre,celular,direccion,fecha} = this.formulario.value;
        this.contactoSVC.createContacts(id,nombre, celular,direccion,fecha)
        
         this.formulario.reset()
          this.back()
-      }
-    }
       
+    }
     
-  }
+  };
 
   mensajeError(field:string):string{
+
     let mensaje:string;
 
     if (this.formulario.get(field).errors?.required) {
       mensaje = "Este campo es obligatorio"
-    }else if(this.formulario.get(field).hasError('pattern')){
+    }
+    else if(this.formulario.get(field).hasError('pattern')){
       mensaje = "Debes ingresar solo numeros"    
-    }else if(this.formulario.get(field).hasError('minlength')){
-      const minlength = this.formulario.get(field).errors?.minlength.requiredLength
+    }
+    else if(this.formulario.get(field).hasError('minlength')){
 
+      const minlength = this.formulario.get(field).errors?.minlength.requiredLength
       mensaje = `minimo ${minlength} caracteres `
     }
     
-    return mensaje
-
+    return mensaje;
   };
 
   isInvalid(field:string):boolean{
     return (this.formulario.get(field).touched || this.formulario.get(field).dirty && !this.formulario.get(field).valid )
-  }
-
+  };
   
- editar(){
+ getDataInForm(){
+
   if (this.id !== null) {
    this.formulario.patchValue(
     {
-      id:this.contactoSVC.contacto[this.id].id,
-      nombre:this.contactoSVC.contacto[this.id].nombre,
-      celular:this.contactoSVC.contacto[this.id].celular,
-      direccion:this.contactoSVC.contacto[this.id].direccion,
-      fecha:this.contactoSVC.contacto[this.id].fecha,
-    }
-  )
+      id:this.contactoSVC.contactos[this.id].id,
+      nombre:this.contactoSVC.contactos[this.id].nombre,
+      celular:this.contactoSVC.contactos[this.id].celular,
+      direccion:this.contactoSVC.contactos[this.id].direccion,
+      fecha:this.contactoSVC.contactos[this.id].fecha,
+    }) 
+  }   
+ };
 
-
-  
-  }
-
-   
- }
-
- loca(){
-   
-   if (this.id === null) {
-     return false
-   }else{
-     
-   }
- }
-}
+};

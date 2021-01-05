@@ -1,5 +1,5 @@
 import { Component,  OnInit,} from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { ContactosService } from 'src/app/shared/services/contactos.service';
 import { Contacto } from "../../shared/models/contacto";
 @Component({
@@ -8,23 +8,20 @@ import { Contacto } from "../../shared/models/contacto";
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit{
-
  
-  constructor(public contactSVC:ContactosService,private router:Router) {}
+  constructor(public contactSVC:ContactosService, 
+              private router:Router) {}
 
   ngOnInit(): void {
     this.contactSVC.cargarStorage()
-  }
-
+  };
   
   borrar(contact:Contacto){
     this.contactSVC.eliminar(contact)
-  }
+  };
 
  pageEditar(some:string){
-  this.router.navigate(["/editar", some])
- 
- }
-
+  this.router.navigate(["/editar", some]) 
+ };
   
 }

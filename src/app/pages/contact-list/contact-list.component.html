@@ -14,32 +14,28 @@
     </div>
   </div>
   <div class="contactList">
-    <div class="info" *ngIf="contactSVC.contacto.length == 0" >
+    <div class="info" *ngIf="contactSVC.contactos.length == 0" >
       <h3>No Existe Ningun Contacto Registrado!</h3>
     </div>
     <li class="contact"
-        *ngFor="let contacto of contactSVC.contacto; let i = index"> 
+        *ngFor="let contacto of contactSVC.contactos; let i = index"> 
      <div class="contact__div">
        <div class="logo">{{contacto?.nombre.charAt(0)}}</div>
        <div class="datos">
          <h4 >{{contacto.nombre}}</h4>
          <p >{{contacto.celular}}</p>
-         <p >{{contacto.fecha}}</p>
+         <p >{{contacto.fecha | date:'dd/MM/yyyy'}}</p>
        </div>
      </div>
      <div class="contact__div">
-       <div class="configIcons">
-      <i (click)="pageEditar(i)" class="fas fa-pen"></i>
-      <!-- <i [routerLink]="['/editar/', i]" class="fas fa-pen"></i> -->
-      
+        <div class="configIcons">
+          <i (click)="pageEditar(i)" class="fas fa-pen"></i>
+        </div>
+
+        <div class="configIcons">
+          <i (click)="borrar(contacto)" class="fas fa-trash"></i>
+        </div>
     </div>
-    <div class="configIcons">
-      <!-- <i (click)="borrar(contacto)" class="far fa-trash-alt"></i> -->
-      <i (click)="borrar(contacto)" class="fas fa-trash"></i>
-    </div>
-  </div>
-  
     </li>
   </div>
-
 </div>

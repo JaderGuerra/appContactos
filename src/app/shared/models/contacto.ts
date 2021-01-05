@@ -3,12 +3,11 @@ export class Contacto {
   nombre:string;
   celular:number;
   direccion:string;
-  fecha:Date; 
-  // fecha:string;
+  fecha:string;
 
   constructor(id:string,nombre:string,
               celular:number,direccion:string,
-              fecha:Date){
+              fecha:string){
 
     this.id = id;
     this.nombre = nombre;

@@ -8,7 +8,7 @@ import { Contacto } from "../models/contacto";
 
 export class ContactosService {
 
-  contacto:Contacto[] = []
+  contactos:Contacto[] = []
 
   constructor() { 
    this.cargarStorage()
@@ -16,30 +16,30 @@ export class ContactosService {
 
   createContacts(id:string, nombre:string,
                  celular:number,direccion:string, 
-                 fecha:Date){
+                 fecha:string){
 
     const nuevoContacto = new Contacto(id,nombre,celular,direccion,fecha)
     
-    this.contacto.push(nuevoContacto)
+    this.contactos.push(nuevoContacto)
     this.guardarStorage()
   };
 
   guardarStorage(){
-    localStorage.setItem('contact',JSON.stringify(this.contacto))
+    localStorage.setItem('contact',JSON.stringify(this.contactos))
   };
 
   cargarStorage() {
     if (localStorage.getItem('contact')) {
-      this.contacto = JSON.parse(localStorage.getItem('contact'))
+      this.contactos = JSON.parse(localStorage.getItem('contact'))
     }
     else {
-      this.contacto = []
+      this.contactos = []
     }
   };
 
   eliminar(item){
-    this.contacto = this.contacto.filter((contact) => contact !== item)
-    localStorage.setItem('contact', JSON.stringify(this.contacto) )
+    this.contactos = this.contactos.filter((contact) => contact !== item)
+    localStorage.setItem('contact', JSON.stringify(this.contactos) )
   };  
 
   
