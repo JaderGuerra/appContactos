@@ -6,7 +6,10 @@ export class Contacto {
   /* fecha:Date; */
   fecha:string;
 
-  constructor(id:string,nombre:string,celular:number,direccion:string,fecha:string){
+  constructor(id:string,nombre:string,
+              celular:number,direccion:string,
+              fecha:string){
+                
     this.id = id;
     this.nombre = nombre;
     this.celular = celular;
