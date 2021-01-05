@@ -10,7 +10,7 @@ import { Contacto } from "../../shared/models/contacto";
 export class ContactListComponent implements OnInit{
 
  
-  constructor(public contactSVC:ContactosService) {}
+  constructor(public contactSVC:ContactosService,private router:Router) {}
 
   ngOnInit(): void {
     this.contactSVC.cargarStorage()
@@ -21,7 +21,10 @@ export class ContactListComponent implements OnInit{
     this.contactSVC.eliminar(contact)
   }
 
+ pageEditar(some:string){
+  this.router.navigate(["/editar", some])
  
+ }
 
   
 }

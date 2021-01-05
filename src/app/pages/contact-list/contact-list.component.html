@@ -24,7 +24,8 @@
      </div>
      <div class="contact__div">
        <div class="configIcons">
-      <i [routerLink]="['/editar/', i]" class="fas fa-pen"></i>
+      <i (click)="pageEditar(i)" class="fas fa-pen"></i>
+      <!-- <i [routerLink]="['/editar/', i]" class="fas fa-pen"></i> -->
       
     </div>
     <div class="configIcons">

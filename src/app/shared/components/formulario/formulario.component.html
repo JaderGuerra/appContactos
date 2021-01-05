@@ -24,8 +24,6 @@
     <input type="text" 
             placeholder="Nombre"
             formControlName="nombre"
-
-            [(ngModel)]="contactoSVC.contacto[this.id].nombre"
             [class.invalid]="formulario.get('nombre').invalid &&
             formulario.get('nombre').dirty">
 

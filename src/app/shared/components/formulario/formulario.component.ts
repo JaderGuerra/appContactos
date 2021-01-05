@@ -48,7 +48,7 @@ export class FormularioComponent implements OnInit {
       return
     }else if (this.formulario.valid) {
       if (this.id) {
-        this.contactoSVC.guardarStorage()        
+        this.contactoSVC.guardarStorage()
        this.back()
        return
       }else{
@@ -103,5 +103,14 @@ export class FormularioComponent implements OnInit {
   }
 
    
+ }
+
+ loca(){
+   
+   if (this.id === null) {
+     return false
+   }else{
+     
+   }
  }
 }
