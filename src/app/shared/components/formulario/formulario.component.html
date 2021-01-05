@@ -1,0 +1,83 @@
+<hr>
+<form autocomplete="off"
+      class="formulario"
+      [formGroup]='formulario'
+      (ngSubmit)="guardar()"
+      >
+
+  <div class="divForms">
+    <label>Numero de Identificacion</label>
+    <input type="text" 
+    placeholder="Id..."
+    formControlName="id"
+    [class.invalid]="formulario.get('id').invalid && 
+                      formulario.get('id').dirty">
+
+    <small class="error" *ngIf="isInvalid('id')">
+      {{mensajeError('id')}}
+    </small>
+    
+  </div>
+
+  <div class="divForms">
+    <label>Nombre Completo</label>
+    <input type="text" placeholder="Nombre"
+    name="nombre"
+          formControlName="nombre"
+     
+          [class.invalid]="formulario.get('nombre').invalid &&
+          formulario.get('nombre').dirty">
+
+    <small class="error" *ngIf="isInvalid('nombre')">
+      {{mensajeError('nombre')}}
+    </small>
+  </div>
+
+  <div class="divForms">
+    <label>Celular</label>
+    <input type="text" placeholder="Celular"
+            formControlName="celular"
+            [class.invalid]="formulario.get('celular').invalid &&
+            formulario.get('celular').dirty">
+
+    <small class="error" *ngIf="isInvalid('celular')">
+      {{mensajeError('celular')}}
+    </small>
+  </div>
+
+  <div class="divForms">
+    <label>Direccion</label>
+    <input type="text" placeholder="Direccion"
+            formControlName="direccion" 
+            [class.invalid]="formulario.get('direccion').invalid &&
+            formulario.get('direccion').dirty">
+
+    <small class="error" *ngIf="isInvalid('direccion')">
+      {{mensajeError('direccion')}}
+    </small>
+  </div>
+
+  <div class="divForms">
+    <label>Fecha de cumpleaños</label>
+    <input type="date" placeholder="Cumpleaños"
+    formControlName="fecha"
+     [class.invalid]="formulario.get('fecha').invalid &&
+            formulario.get('fecha').dirty">
+
+    <small class="error" *ngIf="isInvalid('fecha')">
+      {{mensajeError('fecha')}}
+    </small>
+  </div>
+
+  <div class="btns">
+    <button class="btn" 
+            [ngClass]="{'btnDisabled':formulario.invalid}" 
+            [disabled]="formulario.invalid" 
+            type="submit"
+           
+            >Guardar</button>
+    <button (click)="back()" class="btn" type="button">Cancelar</button>
+  </div>
+
+
+</form>

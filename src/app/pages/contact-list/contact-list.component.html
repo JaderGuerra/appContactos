@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="back">
+    <button routerLink="/home" 
+            class="btnBack">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+  </div>
+  <div class="contactBtn" >
+    <button routerLink="/addcontact" 
+            class="btnAdd">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <div class="contactList">
+    <li class="contact"
+        *ngFor="let contacto of contactSVC.contacto; let i = index"> 
+     <div class="contact__div">
+       <div class="logo">{{contacto?.nombre.charAt(0)}}</div>
+       <div class="datos">
+         <h4>{{contacto.nombre}}</h4>
+         <p>{{contacto.celular}}</p>
+         <p>{{contacto.fecha}}</p>
+       </div>
+     </div>
+     <div class="contact__div">
+       <div class="configIcons">
+      <i [routerLink]="['/editar/', i]" class="fas fa-pen"></i>
+      
+        </div>
+       <div class="configIcons">
+         <i (click)="borrar(contacto)" class="far fa-trash-alt"></i>
+        </div>
+     </div>
+    </li>
+  </div>
+
+ 
+</div>

@@ -1,0 +1,10 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid lavender;
+  box-shadow: 0px 4px 4px lavender;
+  margin-bottom: 1.5em;
+}
+
+.header__h2 {
+  padding: 1em;
+}

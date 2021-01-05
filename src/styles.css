@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+.container {
+  width: 95%;
+  margin: 0 auto;
+  /* border: 1px solid #000000; */
+}
