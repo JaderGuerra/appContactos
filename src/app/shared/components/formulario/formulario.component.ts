@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
+import { Contacto } from '../../models/contacto';
 import { ContactosService } from '../../services/contactos.service';
 
 @Component({
@@ -46,10 +47,13 @@ export class FormularioComponent implements OnInit {
       return
     }
     else if (this.formulario.valid) {
+
         const {id,nombre,celular,direccion,fecha} = this.formulario.value;
-       this.contactoSVC.createContacts(id,nombre, celular,direccion,fecha)
-       
-        this.formulario.reset()
+        if (this.id === null) {
+          this.contactoSVC.createContacts(id,nombre, celular,direccion,fecha)
+          
+           this.formulario.reset()
+        }
          this.back()
       
     }
@@ -89,8 +93,16 @@ export class FormularioComponent implements OnInit {
       celular:this.contactoSVC.contactos[this.id].celular,
       direccion:this.contactoSVC.contactos[this.id].direccion,
       fecha:this.contactoSVC.contactos[this.id].fecha,
-    }) 
-  }   
+    })
+    this.sendControllsEdit() 
+  }
  };
+
+ sendControllsEdit(){
+   this.formulario.valueChanges.subscribe((value) => {
+     this.contactoSVC.contactos[this.id] = new Contacto(value.id,value.nombre,value.celular,value.direccion,value.fecha)
+     this.contactoSVC.guardarStorage()
+    })
+ }
 
 };
