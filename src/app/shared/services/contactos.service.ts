@@ -21,7 +21,7 @@ export class ContactosService {
     const nuevoContacto = new Contacto(id,nombre,celular,direccion,fecha)
     
     this.contactos.push(nuevoContacto)
-    this.guardarStorage()
+    
   };
 
   guardarStorage(){

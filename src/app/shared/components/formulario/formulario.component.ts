@@ -41,7 +41,7 @@ export class FormularioComponent implements OnInit {
    this.getDataInForm()
   }
 
-  guardar(){
+guardar(){
 
     if (this.formulario.invalid) {
       return
@@ -54,6 +54,7 @@ export class FormularioComponent implements OnInit {
           
            this.formulario.reset()
         }
+        this.contactoSVC.guardarStorage()
          this.back()
       
     }
@@ -98,10 +99,9 @@ export class FormularioComponent implements OnInit {
   }
  };
 
- sendControllsEdit(){
+  sendControllsEdit(){
    this.formulario.valueChanges.subscribe((value) => {
      this.contactoSVC.contactos[this.id] = new Contacto(value.id,value.nombre,value.celular,value.direccion,value.fecha)
-     this.contactoSVC.guardarStorage()
     })
  }
 
