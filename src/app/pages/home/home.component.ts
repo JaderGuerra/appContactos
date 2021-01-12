@@ -30,7 +30,12 @@ export class HomeComponent implements OnInit {
       this.nuevoDia = `0${dia}`
       this.nuevoMes = `0${mes}`
       return  (`${this.nuevoMes}-${this.nuevoDia}`)
-    }else{
+    }
+    else if(mes <= 9){
+      this.nuevoMes = `0${mes}`
+      return  (`${this.nuevoMes}-${dia}`)
+    }
+    else{
       return  (`${mes}-${dia}`)
     }
     
@@ -38,7 +43,6 @@ export class HomeComponent implements OnInit {
 
   aumentarContador(){
     const fechaActual = this.comprobarFecha()
-
     this.contactoSVC.contactos.map((x) => {
       if (fechaActual == x.fecha.substr(5)) {
         this.contador++
